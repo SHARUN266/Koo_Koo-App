@@ -16,7 +16,7 @@ function Home() {
               <div className="flex flex-col w-full h-full">
                 <input
                   type="text"
-                  className="w-full h-full bg-transparent   border-b-[0.5px] border-gray-600 p-4 outline-none border-none"
+                  className="w-full placeholder:text-2xl  placeholder:text-gray-600 h-full bg-transparent   border-b-[0.5px] border-gray-600 p-4 outline-none border-none"
                   placeholder="What's heppening?"
                 />
               </div>
