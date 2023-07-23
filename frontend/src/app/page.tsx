@@ -1,6 +1,8 @@
 import LeftSidebar from "@/Components/LeftSidebar";
 import React from "react";
+import { BsSearch } from "react-icons/bs";
 
+import Main from "@/Components/Main";
 function Home() {
   return (
     <div className="w-full h-full flex justify-center items-center relative bg-black px-6">
@@ -8,29 +10,69 @@ function Home() {
         {/* Left sidebar for navigation/header*/}
         <LeftSidebar />
 
-        <main className="ml-[275px] flex w-[600px] h-full min-h-screen  flex-col  border-l-[0.5px] border-r-[0.5px] border-gray-600">
-          <h1 className="text-xl font-bold p-4">Home</h1>
-          <div className="border-t-[0.5px] px-4 border-b-[0.5px]  flex items-stretch py-4 space-x-2 border-gray-600 h-32  relative">
-            <div className="w-10 h-10 bg-slate-400 rounded-full h-full  flex-none"></div>
-            <div className="flex flex-col w-full">
-              <div className="flex flex-col w-full h-full">
-                <input
-                  type="text"
-                  className="w-full placeholder:text-2xl  placeholder:text-gray-600 h-full bg-transparent   border-b-[0.5px] border-gray-600 p-4 outline-none border-none"
-                  placeholder="What's heppening?"
-                />
-              </div>
-              <div className="w-full justify-between items-center  flex">
-                <div></div>
-                <div className="w-full max-w-[100px]">
-                  <button className="rounded-full bg-primary px-4 py-2 w-full  text-lg text-center hover:bg-opacity-70  transition duration-200 font-bold">
-                    Tweet
-                  </button>
-                </div>
-              </div>
+        <Main />
+        <section className="w-full border-red sticky hidden top-2 overflow-y-auto mt-2 xl:flex flex-col items-stretch h-[100vh]  px-6">
+          <div>
+            <div className="relative w-full h-full group">
+              <input
+                id="searchBox"
+                type="text"
+                placeholder="Search Twitter"
+                className="outline-none peer focus:border-primary focus:border bg-neutral-900/90 w-full h-full rounded-xl py-4 pl-14 pr-4"
+              />
+              <label
+                htmlFor="searchBox"
+                className="absolute top-0 left-0 h-full flex items-center justify-center p-4 text-gray-500 peer-focus:text-primary"
+              >
+                <BsSearch className="w-5 h-5" />
+              </label>
             </div>
           </div>
-        </main>
+          <div className="flex flex-col rounded-xl bg-neutral-900  my-4">
+            <h3 className="font-bold text-xl my-4 px-4">What’s happening</h3>
+            <div>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="hover:bg-white/10 p-4 last:rounded-b-xl transition duration-200"
+                >
+                  <div className="font-bold text-lg ">#trending{i + 1}</div>
+                  <div className="text-xs text-neutral-400">35.4k</div>
+                </div>
+              ))}
+            </div>
+            <div>
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i}></div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col rounded-xl bg-neutral-900 my-4">
+            <h3 className="font-bold text-xl my-4 px-4">Who to follow</h3>
+            <div>
+              {Array.from({ length: 2 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="hover:bg-white/10 p-4 flex justify-between items-center last:rounded-b-xl transition duration-200"
+                >
+                  <div className="flex items-center space-x-2">
+                    <div className="w-10 h-10 bg-neutral-600 rounded-full flex-none"></div>
+                    <div className="flex flex-col">
+                      <div className="font-bold text-white">Other User</div>
+                      <div className="text-gray-500 text-xs">
+                        @otheruser1232
+                      </div>
+                    </div>
+                  </div>
+
+                  <button className="rounded-full px-6 py-2 bg-white text-neutral-950">
+                    Follow
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
